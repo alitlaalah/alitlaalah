@@ -8,17 +8,26 @@
     <meta name="author" content="د. أميرة عبد الحي">
     <meta property="og:title" content="الإطلالة العربية - قمة الاحترافية في التدريب والاستشارات">
     <meta property="og:description" content="نقدم حلولاً تدريبية واستشارية متكاملة تساعد مؤسساتكم على تحقيق التميز والنمو المستدام">
-    <meta property="og:image" content="https://alitlaalah.org/images/logo.png">
+    <meta property="og:image" content="https://alitlaalah.org/Image/logo.jpg">
     <meta property="og:url" content="https://alitlaalah.org">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://alitlaalah.org">
+    <link rel="icon" type="image/jpeg" href="Image/logo.jpg">
+    <link rel="apple-touch-icon" href="Image/logo.jpg">
+    <link rel="alternate" hreflang="ar" href="https://alitlaalah.org/ar">
+    <link rel="alternate" hreflang="en" href="https://alitlaalah.org/en">
+    <link rel="alternate" hreflang="de" href="https://alitlaalah.org/de">
+    <link rel="alternate" hreflang="x-default" href="https://alitlaalah.org">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "الإطلالة العربية",
       "url": "https://alitlaalah.org",
-      "logo": "https://alitlaalah.org/images/logo.png",
+      "logo": "https://alitlaalah.org/Image/logo.jpg",
       "description": "الريادة في تقديم الحلول التدريبية والاستشارية المتكاملة",
       "founder": {
         "@type": "Person",
@@ -27,7 +36,9 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+20-110-115-2370",
-        "contactType": "customer service"
+        "contactType": "customer service",
+        "areaServed": "EG",
+        "availableLanguage": ["Arabic", "English", "German"]
       },
       "address": {
         "@type": "PostalAddress",
@@ -51,6 +62,7 @@
             --gold-light: #f4e4a9;
             --accent-orange: #e67e22;
             --accent-teal: #1abc9c;
+            --accent-cyber: #2ecc71;
             --light-gray: #f8f9fa;
             --medium-gray: #e9ecef;
             --dark-gray: #2d3748;
@@ -62,6 +74,7 @@
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --gradient-primary: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
             --gradient-gold: linear-gradient(135deg, var(--secondary-gold), var(--accent-orange));
+            --gradient-cyber: linear-gradient(135deg, var(--accent-cyber), var(--primary-blue));
         }
 
         * {
@@ -89,7 +102,7 @@
         }
 
         .section {
-            padding: 8rem 0;
+            padding: 4rem 0;
         }
 
         .section-title {
@@ -183,12 +196,28 @@
             transform: translateY(-3px);
         }
 
+        .btn-cyber {
+            background: var(--gradient-cyber);
+            color: var(--white);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-cyber:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.6);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
         /* Header Styles - Enhanced */
         header {
             background: rgba(15, 26, 48, 0.95);
             backdrop-filter: blur(15px);
             color: var(--white);
-            padding: 1.5rem 0;
+            padding: 2rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -198,7 +227,7 @@
         }
 
         header.scrolled {
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             background: rgba(15, 26, 48, 0.98);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
@@ -207,6 +236,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
@@ -215,14 +246,9 @@
             position: relative;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
         .logo-img {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-left: 15px;
             border: 3px solid var(--secondary-gold);
@@ -234,7 +260,7 @@
         }
 
         .logo h1 {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             margin-right: 10px;
             color: var(--white);
             font-weight: 800;
@@ -260,21 +286,24 @@
         nav ul {
             display: flex;
             list-style: none;
+            justify-content: space-around;
+            padding: 0 20px;
         }
 
         nav ul li {
-            margin-left: 2.5rem;
+            margin: 0;
             position: relative;
         }
 
         nav ul li a {
             color: var(--white);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             position: relative;
-            padding: 8px 0;
-            font-size: 1.05rem;
+            padding: 15px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
         }
 
         nav ul li a:after {
@@ -282,8 +311,9 @@
             position: absolute;
             bottom: 0;
             right: 0;
+            left: auto;
             width: 0;
-            height: 3px;
+            height: 2px;
             background: var(--secondary-gold);
             transition: var(--transition);
             border-radius: 2px;
@@ -300,6 +330,7 @@
         .header-actions {
             display: flex;
             align-items: center;
+            gap: 1.5rem;
         }
 
         .mobile-toggle {
@@ -311,6 +342,7 @@
             cursor: pointer;
             z-index: 1001;
         }
+
 
         /* Enhanced Hero Section */
         .hero {
@@ -613,9 +645,7 @@
             font-weight: 800;
             display: block;
             margin-bottom: 0.5rem;
-            background: linear-gradient(to right, var(--secondary-gold), var(--accent-teal));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--secondary-gold);
         }
 
         .stat-text {
@@ -750,6 +780,7 @@
             margin-bottom: 2rem;
             transition: var(--transition);
             flex-grow: 1;
+            font-size: 1.2rem;
         }
 
         .service-link {
@@ -775,10 +806,11 @@
             transform: translateX(-8px);
         }
 
-        /* Enhanced Clients Section */
+        /* تحسين قسم العملاء */
         .clients {
-            padding: 6rem 0;
-            background: var(--white);
+            padding: 4rem 0 1rem 0;
+            background: var(--light-gray);
+            position: relative;
         }
 
         .clients-container {
@@ -786,113 +818,279 @@
             margin: 0 auto;
         }
 
-        .client-logos {
+        .client-slider {
+            width: 100%;
+            overflow: hidden;
+            height: 200px;
+            background: transparent;
+            position: relative;
+            margin-bottom: 40px;
+            direction: ltr;
+        }
+
+        .client-track {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            gap: 50px;
             align-items: center;
-            margin-top: 4rem;
-            gap: 2.5rem;
+            width: max-content;
+            animation: client-scroll 60s linear infinite;
+        }
+
+        .client-slider:hover .client-track {
+            animation-play-state: paused;
         }
 
         .client-logo {
-            padding: 2rem;
-            background: var(--light-gray);
-            border-radius: 15px;
-            transition: var(--transition);
-            flex: 0 0 calc(20% - 2.5rem);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
             height: 150px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .client-logo:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
             transition: var(--transition);
+            border: 2px solid transparent;
         }
 
         .client-logo:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary-gold);
+        }
+
+        .client-logo img {
+            max-width: 180px;
+            max-height: 100px;
+            transition: var(--transition);
+            object-fit: contain;
+            display: block;
+        }
+
+        .client-logo:hover img {
+            transform: scale(1.1);
+        }
+
+        @keyframes client-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-16 * (220px + 50px)));
+            }
+        }
+
+        /* قسم الدورات الجديد */
+        .courses {
+            background: var(--white);
+            position: relative;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .course-card:hover {
             transform: translateY(-15px);
             box-shadow: var(--shadow-lg);
         }
 
-        .client-logo:hover:before {
-            opacity: 1;
-        }
-
-        .client-logo i {
-            font-size: 3.5rem;
-            color: var(--primary-blue);
-            transition: var(--transition);
-            z-index: 1;
-            position: relative;
-        }
-
-        .client-logo:hover i {
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gradient-gold);
             color: var(--white);
-            transform: scale(1.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .seminar-badge {
+            background: var(--gradient-cyber);
+        }
+
+        .course-image {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+
+        .course-content {
+            padding: 2rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .course-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .course-instructor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .instructor-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .instructor-image img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instructor-info h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .instructor-info p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .course-link {
+            color: var(--secondary-gold);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .course-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .course-link:hover i {
+            transform: translateX(-5px);
+        }
+
+        .courses-cta {
+            text-align: center;
+            margin-top: 4rem;
         }
 
         /* Enhanced Testimonials Section */
         .testimonials {
             background: var(--light-gray);
             position: relative;
+            padding: 3rem 0;
         }
 
-        .testimonials-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem;
         }
 
-        .testimonial-slider {
+        .testimonial {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
             position: relative;
-            overflow: hidden;
+            padding: 1.5rem;
+            margin: 0.5rem;
         }
 
-        .testimonial-item {
-            display: none;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.6s ease;
-        }
-
-        .testimonial-item.active {
-            display: block;
-            opacity: 1;
-            transform: translateX(0);
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
 
         .testimonial-content {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            text-align: center;
+            padding: 2rem;
             position: relative;
+            text-align: center;
         }
 
-        .testimonial-content:before {
-            content: '"';
+        .quote {
             position: absolute;
             top: 20px;
             right: 30px;
-            font-size: 4rem;
+            font-size: 3rem;
             color: var(--secondary-gold);
             font-family: serif;
+            opacity: 0.3;
         }
 
-        .testimonial-text p {
-            font-size: 1.3rem;
+        .testimonial-content p {
+            font-size: 1.1rem;
             color: var(--text-light);
             line-height: 1.8;
             margin-bottom: 2rem;
@@ -902,72 +1100,29 @@
         .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
+            padding: 1rem 0 0 0;
+            margin: 1rem 0 0 0;
+            border-top: 1px solid var(--medium-gray);
         }
 
         .author-image {
             font-size: 3rem;
             color: var(--primary-blue);
+            flex-shrink: 0;
         }
 
         .author-info h4 {
             color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
         }
 
         .author-info p {
             color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        .testimonial-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-prev, .testimonial-next {
-            background: var(--gradient-gold);
-            color: var(--white);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-prev:hover, .testimonial-next:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .testimonial-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--medium-gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dot.active {
-            background: var(--secondary-gold);
-            transform: scale(1.2);
+            font-size: 0.9rem;
+            margin: 0;
         }
 
         /* Enhanced CTA Section */
@@ -1011,103 +1166,12 @@
             line-height: 1.8;
         }
 
-        /* Enhanced Blog Section */
-        .blog {
-            background: var(--light-gray);
-            position: relative;
-        }
-
-        .blog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .blog-post {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .blog-post:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .post-image {
-            background: var(--gradient-primary);
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .post-image i {
-            font-size: 4rem;
-            color: var(--white);
-        }
-
-        .post-content {
-            padding: 2rem;
-        }
-
-        .post-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .post-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .post-content h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.4;
-        }
-
-        .post-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .post-link {
-            color: var(--secondary-gold);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-
-        .post-link:hover {
-            color: var(--accent-orange);
-        }
-
-        .post-link:hover i {
-            transform: translateX(-5px);
-        }
-
-        .blog-cta {
-            text-align: center;
-        }
 
         /* Enhanced Team Section */
         .team {
             background: var(--white);
             position: relative;
+            padding: 3rem 0;
         }
 
         .team-container {
@@ -1202,6 +1266,8 @@
         .member-info p:last-of-type {
             color: var(--text-light);
             line-height: 1.6;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         /* Newsletter Section */
@@ -1324,8 +1390,9 @@
             gap: 1.5rem;
         }
 
-        .form-row {
+        .form-group {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
         }
 
@@ -1337,6 +1404,7 @@
             font-size: 1rem;
             font-family: 'Tajawal', sans-serif;
             transition: var(--transition);
+            width: 100%;
         }
 
         .contact-form-main input:focus,
@@ -1562,57 +1630,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Loading Screen */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        #loading-screen.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: var(--white);
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid var(--secondary-gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 2rem;
-        }
-
-        .loading-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .loading-content p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         /* New Features */
 
         /* Particles Background */
@@ -1697,7 +1714,8 @@
             }
             
             .client-logo {
-                flex: 0 0 calc(25% - 2.5rem);
+                flex: 0 0 280px;
+                height: 160px;
             }
         }
 
@@ -1711,7 +1729,8 @@
             }
 
             .client-logo {
-                flex: 0 0 calc(33.333% - 2.5rem);
+                flex: 0 0 260px;
+                height: 150px;
             }
 
             .services-container {
@@ -1729,15 +1748,42 @@
             }
         }
 
+        @media (max-width: 992px) {
+            .logo h1 {
+                font-size: 1.7rem;
+            }
+
+            .logo-img {
+                width: 75px;
+                height: 75px;
+            }
+
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .header-actions {
+                gap: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
+
+            .logo {
+                order: 1;
+                text-align: center;
+                margin-bottom: 1rem;
             }
 
             nav {
+                order: 2;
                 width: 100%;
-                margin-top: 1.5rem;
+                margin-top: 0;
                 display: none;
+                background: rgba(15, 26, 48, 0.95);
+                border-radius: 10px;
+                padding: 1rem;
             }
 
             nav.active {
@@ -1746,18 +1792,31 @@
 
             nav ul {
                 flex-direction: column;
-                align-items: center;
+                gap: 0.5rem;
             }
 
-            nav ul li {
-                margin: 1rem 0;
+            nav ul li a {
+                padding: 12px 20px;
+                text-align: center;
             }
 
             .mobile-toggle {
                 display: block;
                 position: absolute;
                 top: 1.5rem;
-                left: 2rem;
+                right: 2rem;
+            }
+            
+            .header-actions {
+                order: 3;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .language-selector {
+                margin-top: 0;
+                margin-right: 0;
+                margin-left: 0;
             }
 
             .hero h2 {
@@ -1774,7 +1833,13 @@
             }
 
             .client-logo {
-                flex: 0 0 calc(50% - 2.5rem);
+                flex: 0 0 220px;
+                height: 125px;
+                padding: 2rem;
+            }
+
+            .client-logo img {
+                max-height: 80px;
             }
 
             .floating-action {
@@ -1804,7 +1869,7 @@
                 gap: 1rem;
             }
 
-            .form-row {
+            .form-group {
                 flex-direction: column;
                 gap: 1.5rem;
             }
@@ -1831,8 +1896,22 @@
                 font-size: 3.2rem;
             }
 
+            .client-slider {
+                padding: 1rem 0;
+            }
+
+            .client-track {
+                gap: 1.5rem;
+            }
+
             .client-logo {
-                flex: 0 0 100%;
+                flex: 0 0 200px;
+                height: 115px;
+                padding: 1.8rem;
+            }
+
+            .client-logo img {
+                max-height: 75px;
             }
             
             .floating-action {
@@ -1840,17 +1919,38 @@
                 left: 15px;
             }
         }
+
+        /* Extra small screens - 400px and below */
+        @media (max-width: 400px) {
+            .client-slider {
+                padding: 0.5rem 0;
+            }
+
+            .client-track {
+                gap: 1rem;
+            }
+
+            .client-logo {
+                flex: 0 0 180px;
+                height: 100px;
+                padding: 1.5rem;
+            }
+
+            .client-logo img {
+                max-height: 65px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h2>الإطلالة العربية</h2>
-            <p>نقدم الحلول التدريبية والاستشارية المتكاملة</p>
-        </div>
-    </div>
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
@@ -1870,13 +1970,13 @@
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#courses">دوراتنا</a></li>
                     <li><a href="#clients">عملاؤنا</a></li>
-                    <li><a href="#blog">المدونة</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#contact" class="btn btn-primary">اطلب استشارة</a>
+                <a href="#contact" class="btn btn-primary btn-small" style="margin-left: 20px;">اطلب استشارة</a>
             </div>
         </div>
     </header>
@@ -1893,7 +1993,7 @@
             <h2>الريادة في التدريب والاستشارات</h2>
             <p>نقدم حلولاً تدريبية واستشارية متكاملة تساعد مؤسساتكم على تحقيق التميز والنمو المستدام بمعايير عالمية</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">اكتشف خدماتنا <i class="fas fa-arrow-left"></i></a>
+                <a href="#services" class="btn btn-primary">اكتشف خدماتنا</a>
                 <a href="#about" class="btn btn-secondary">تعرف علينا <i class="fas fa-user"></i></a>
             </div>
         </div>
@@ -1942,22 +2042,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="about-card stats-card">
-                    <div class="about-stats">
-                        <div class="about-stat">
-                            <h4>15+</h4>
-                            <p>سنة خبرة</p>
-                        </div>
-                        <div class="about-stat">
-                            <h4>500+</h4>
-                            <p>عميل راضٍ</p>
-                        </div>
-                        <div class="about-stat">
-                            <h4>120+</h4>
-                            <p>برنامج تدريبي</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1983,7 +2067,7 @@
                 <div class="stat-icon">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
-                <span class="stat-number" data-count="120">0</span>
+                <span class="stat-number" data-count="75">0</span>
                 <span class="stat-text">برنامج تدريبي</span>
             </div>
             <div class="stat-item">
@@ -2011,7 +2095,6 @@
                     <div class="service-content">
                         <h3>برامج تدريبية متخصصة</h3>
                         <p>تصميم وتنفيذ برامج تدريبية مخصصة تلبي احتياجات مؤسستكم وتواكب أحدث الاتجاهات العالمية في مختلف المجالات الإدارية والتقنية</p>
-                        <a href="#" class="service-link">اكتشف المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -2021,7 +2104,6 @@
                     <div class="service-content">
                         <h3>استشارات إدارية واستراتيجية</h3>
                         <p>تقديم حلول استشارية متكاملة تساعد مؤسستكم على تحسين الأداء واتخاذ القرارات الاستراتيجية لتحقيق النمو المستدام</p>
-                        <a href="#" class="service-link">اكتشف المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -2031,9 +2113,92 @@
                     <div class="service-content">
                         <h3>تطوير العمليات والجودة</h3>
                         <p>تحسين وتطوير العمليات الإدارية والتشغيلية لتحقيق الكفاءة والجودة في الأداء ورفع مستوى الإنتاجية</p>
-                        <a href="#" class="service-link">اكتشف المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses section" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>دوراتنا المميزة</h2>
+                <p>اكتشف أحدث الدورات التدريبية التي نقدمها بالشراكة مع خبراء متخصصين</p>
+            </div>
+            <div class="courses-container">
+                <div class="course-card">
+                    <div class="course-badge">جديد</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تعليم القواعد النحوية">
+                    </div>
+                    <div class="course-content">
+                        <h3>تعليم القواعد النحوية لغير الناطقين بالعربية</h3>
+                        <p>دورة متخصصة لتعليم قواعد اللغة العربية بشكل مبسط وسهل للطلاب غير الناطقين بالعربية، تشمل جميع المستويات من المبتدئ إلى المتقدم.</p>
+                        
+                        <div class="course-instructor">
+                            <div class="instructor-image">
+                                <img src="Image/Image3.png" alt="د. محمد عبدالمنعم عبدالحي" class="member-photo">
+                            </div>
+                            <div class="instructor-info">
+                                <h4>د. محمد عبدالمنعم عبدالحي</h4>
+                                <p>أستاذ اللغة العربية - جامعة الطائف وجامعة طنطا</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="course-link">سجل في الدورة الآن</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-badge">الأكثر طلباً</div>
+                    <div class="course-image">
+                        <img src="Image/Image5.jpg" alt="تدريب المدربين (TOT)">
+                    </div>
+                    <div class="course-content">
+                        <h3>تدريب المدربين (TOT)</h3>
+                        <p>دورة تدريب المدربين (TOT) التي تركز على إعداد حقائب تدريبية احترافية، وتعلم أسرار التدريب الناجح، واستخدام تقنيات VAK للتأثير والإقناع، بالإضافة إلى تطوير مهارات العرض والإلقاء والتواصل الفعال.</p>
+
+                        <div class="course-instructor">
+                            <div class="instructor-image">
+                                <img src="Image/Image2.png" alt="د. أميرة عبد الحي" class="member-photo">
+                            </div>
+                            <div class="instructor-info">
+                                <h4>د. أميرة عبد الحي</h4>
+                                <p>المؤسسة والمديرة التنفيذية - تكنولوجيا التعليم والمعلومات</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="course-link">سجل في الدورة الآن</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-badge seminar-badge">ندوة</div>
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ندوة توطين ثقافة الأمن السيبراني">
+                    </div>
+                    <div class="course-content">
+                        <h3>ندوة توطين ثقافة الأمن السيبراني</h3>
+                        <p>تعلم أساسيات توطين ثقافة الأمن السيبراني وأهميتها في حماية المؤسسات التعليمية من التهديدات الرقمية والحفاظ على البيانات الآمنة.</p>
+
+                        <div class="course-instructor">
+                            <div class="instructor-image">
+                                <img src="Image/Image6.jpg" alt="د. منال البلقاسي" class="member-photo">
+                            </div>
+                            <div class="instructor-info">
+                                <h4>د. منال البلقاسي</h4>
+                                <p>مستشار ومدرب معتمد - أستاذ نظم المعلومات المساعد</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="course-link">سجل في الدورة الآن</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="courses-cta">
+                <a href="courses.html" class="btn btn-primary">استعرض جميع الدورات</a>
             </div>
         </div>
     </section>
@@ -2043,96 +2208,112 @@
         <div class="container">
             <div class="section-title">
                 <h2>عملاؤنا وشركاء النجاح</h2>
-                <p>نفتخر بشراكاتنا الناجحة مع أبرز المؤسسات والشركات الرائدة في مختلف القطاعات</p>
+                <p>نفتخر بشراكاتنا الاستراتيجية مع أبرز المنصات التعليمية العالمية والمؤسسات التدريبية المعتمدة</p>
             </div>
             <div class="clients-container">
-                <div class="client-logos">
-                    <div class="client-logo">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <div class="client-logo">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="client-logo">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <div class="client-logo">
-                        <i class="fas fa-hospital"></i>
-                    </div>
-                    <div class="client-logo">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials section">
-        <div class="container">
-            <div class="section-title">
-                <h2>آراء عملائنا</h2>
-                <p>نفتخر بثقة عملائنا وشركائنا الذين حققوا معنا نجاحات استثنائية</p>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial-slider">
-                    <div class="testimonial-item active">
-                        <div class="testimonial-content">
-                            <div class="testimonial-text">
-                                <p>"خدمات الإطلالة العربية ممتازة في مجال التدريب والاستشارات. ساعدونا في تطوير فريقنا وتحسين أدائنا بشكل ملحوظ."</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-image">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
-                                <div class="author-info">
-                                    <h4>أحمد محمد</h4>
-                                    <p>مدير الموارد البشرية - شركة XYZ</p>
-                                </div>
-                            </div>
+                <div class="client-slider">
+                    <div class="client-track">
+                        <!-- شعارات العملاء والشركاء التعليميين -->
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <!-- تكرار الشعارات للتمرير المستمر -->
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <!-- نسخة إضافية للتمرير اللانهائي السلس -->
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <!-- نسخة ثالثة لضمان اللانهاية -->
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/coursera.png" alt="Coursera" title="Coursera">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/udemy.png" alt="Udemy" title="Udemy">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/Microsort.png" alt="Microsoft" title="Microsoft">
+                        </div>
+                        <div class="client-logo">
+                            <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
                         </div>
                     </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <div class="testimonial-text">
-                                <p>"البرامج التدريبية المتخصصة التي قدمتها الإطلالة العربية غيرت مفهوم التدريب لدينا. نتائج مبهرة وفريق محترف."</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-image">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
-                                <div class="author-info">
-                                    <h4>فاطمة علي</h4>
-                                    <p>مديرة التطوير - مؤسسة ABC</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <div class="testimonial-text">
-                                <p>"استشاراتهم الإدارية ساعدتنا في اتخاذ قرارات استراتيجية صحيحة. شراكة ناجحة ونتائج ملموسة."</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-image">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
-                                <div class="author-info">
-                                    <h4>محمد حسن</h4>
-                                    <p>رئيس مجلس الإدارة - مجموعة DEF</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-nav">
-                    <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="testimonial-dots">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
-                    </div>
-                    <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -2148,117 +2329,44 @@
             <div class="team-container">
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="Image/My_photo.png" alt="د. أميرة عبد الحي" class="member-photo">
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
+                        <img src="Image/Image2.png" alt="د. أميرة عبد الحي" class="member-photo">
                     </div>
                     <div class="member-info">
                         <h3>د. أميرة عبد الحي</h3>
-                        <p>مؤسسة ومديرة تنفيذية</p>
-                        <p>أستاذ مساعد بكلية التربية قسم تكنولوجيا التعليم والمعلومات والذكاء الاصطناعي جامعة باشن العالميه بامريكا - مدرب دولي معتمد</p>
+                        <p>المؤسسة والمديرة التنفيذية</p>
+                        <p>تكنولوجيا التعليم والمعلومات والذكاء الاصطناعي - جامعة باشن العالمية بأمريكا</p>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user-graduate"></i>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
+                        <img src="Image/Image3.png" alt="د. محمد عبدالمنعم عبدالحي" class="member-photo">
                     </div>
                     <div class="member-info">
-                        <h3>أحمد محمد</h3>
-                        <p>مدير التدريب</p>
-                        <p>متخصص في تصميم وتنفيذ البرامج التدريبية المخصصة للمؤسسات</p>
+                        <h3>د. محمد عبدالمنعم عبدالحي</h3>
+                        <p>أستاذ اللغة العربية</p>
+                        <p>جامعة الطائف وجامعة طنطا - متخصص في تعليم اللغة العربية لغير الناطقين</p>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user-cog"></i>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
+                        <img src="Image/Image6.jpg" alt="د. منال البلقاسي" class="member-photo">
                     </div>
                     <div class="member-info">
-                        <h3>فاطمة علي</h3>
-                        <p>استشارية إدارية</p>
-                        <p>خبيرة في الاستشارات الاستراتيجية والتطوير التنظيمي</p>
+                        <h3>د. منال البلقاسي</h3>
+                        <p>مستشار ومدرب معتمد</p>
+                        <p>أستاذ نظم المعلومات المساعد - خبيرة في الأمن السيبراني والتدريب</p>
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <i class="fas fa-user-chart"></i>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
+                        <img src="Image/Image1.png" alt="د. عثمان خليل" class="member-photo">
                     </div>
                     <div class="member-info">
-                        <h3>محمد حسن</h3>
-                        <p>مطور أعمال</p>
-                        <p>متخصص في تطوير الأعمال وتحليل السوق ودراسات الجدوى</p>
+                        <h3>د. عثمان خليل</h3>
+                        <p>خبير علم النفس التربوي</p>
+                        <p>متخصص في علم النفس التربوي والتعليم والتطوير النفسي للمتعلمين</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="blog section" id="blog">
-        <div class="container">
-            <div class="section-title">
-                <h2>المدونة</h2>
-                <p>اطلع على أحدث المقالات والمقالات التدريبية والاستشارية من خبرائنا</p>
-            </div>
-            <div class="blog-container">
-                <div class="blog-post">
-                    <div class="post-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-calendar"></i> 15 ديسمبر 2024</span>
-                            <span><i class="fas fa-user"></i> د. أميرة عبد الحي</span>
-                        </div>
-                        <h3>أهمية التدريب في تطوير الأعمال</h3>
-                        <p>استكشف كيف يساهم التدريب الفعال في تحسين أداء المؤسسات وزيادة الإنتاجية</p>
-                        <a href="#" class="post-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-calendar"></i> 10 ديسمبر 2024</span>
-                            <span><i class="fas fa-user"></i> أحمد محمد</span>
-                        </div>
-                        <h3>استراتيجيات الإدارة الحديثة</h3>
-                        <p>نظرة على أحدث الاستراتيجيات الإدارية التي تساعد الشركات على المنافسة</p>
-                        <a href="#" class="post-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
-                <div class="blog-post">
-                    <div class="post-image">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-calendar"></i> 5 ديسمبر 2024</span>
-                            <span><i class="fas fa-user"></i> فاطمة علي</span>
-                        </div>
-                        <h3>الابتكار في التدريب الإلكتروني</h3>
-                        <p>كيف يمكن للتدريب الإلكتروني أن يحول تجربة التعلم ويحسن النتائج</p>
-                        <a href="#" class="post-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-cta">
-                <a href="#" class="btn btn-primary">عرض جميع المقالات <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
     </section>
@@ -2269,13 +2377,13 @@
             <div class="cta-content">
                 <h2>جاهزون لبدء رحلة التميز معاً؟</h2>
                 <p>اتصل بنا اليوم للحصول على استشارة مجانية وتصميم حل مخصص لمؤسستك</p>
-                <a href="#contact" class="btn btn-primary">اطلب استشارة مجانية <i class="fas fa-arrow-left"></i></a>
+                <a href="#contact" class="btn btn-primary">اطلب استشارة مجانية</a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact section" id="contact-section">
+    <section class="contact section" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>اتصل بنا</h2>
@@ -2322,13 +2430,21 @@
                 </div>
                 <div class="contact-form-container">
                     <form class="contact-form-main">
-                        <div class="form-row">
+                        <div class="form-group">
                             <input type="text" placeholder="الاسم الكامل" required>
+                        </div>
+                        <div class="form-group">
                             <input type="email" placeholder="البريد الإلكتروني" required>
                         </div>
-                        <input type="tel" placeholder="رقم الهاتف">
-                        <input type="text" placeholder="الموضوع" required>
-                        <textarea placeholder="رسالتك" rows="5" required></textarea>
+                        <div class="form-group">
+                            <input type="tel" placeholder="رقم الهاتف">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="الموضوع" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="رسالتك" rows="5" required></textarea>
+                        </div>
                         <button type="submit" class="btn btn-primary">إرسال الرسالة <i class="fas fa-send"></i></button>
                     </form>
                 </div>
@@ -2356,21 +2472,21 @@
                 <div class="footer-column">
                     <h3>روابط سريعة</h3>
                     <ul>
-                        <li><a href="#home">الرئيسية <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#about">من نحن <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#services">خدماتنا <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#clients">عملاؤنا <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#blog">المدونة <i class="fas fa-arrow-left"></i></a></li>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#courses">دوراتنا</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>خدماتنا</h3>
                     <ul>
-                        <li><a href="#">التدريب المتخصص <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#">الاستشارات الإدارية <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#">التطوير التنظيمي <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#">استشارات الجودة <i class="fas fa-arrow-left"></i></a></li>
-                        <li><a href="#">التخطيط الاستراتيجي <i class="fas fa-arrow-left"></i></a></li>
+                        <li><a href="#">التدريب المتخصص</a></li>
+                        <li><a href="#">الاستشارات الإدارية</a></li>
+                        <li><a href="#">التطوير التنظيمي</a></li>
+                        <li><a href="#">استشارات الجودة</a></li>
+                        <li><a href="#">ندوات الأمن السيبراني</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -2390,10 +2506,6 @@
 
     <!-- Floating Action Buttons -->
     <div class="floating-action">
-        <a href="tel:+201101152370" class="floating-btn">
-            <i class="fas fa-phone"></i>
-            <span class="tooltip">اتصل بنا</span>
-        </a>
         <a href="https://wa.me/201101152370" class="floating-btn whatsapp-btn" target="_blank">
             <i class="fab fa-whatsapp"></i>
             <span class="tooltip">راسلنا على واتساب</span>
@@ -2408,13 +2520,6 @@
     <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loading-screen').classList.add('hide');
-            }, 2000); // Show for 2 seconds
-        });
 
         // Header scroll effect and go to top button visibility
         const goToTopBtn = document.getElementById('go-to-top');
@@ -2465,41 +2570,68 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Animate stats counter with easing
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const easedProgress = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-                obj.innerHTML = Math.floor(easedProgress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
+        // Stats animation - Ultra-fast version
+        let statsAnimated = false;
+        
         function animateStats() {
+            if (statsAnimated) return; // Prevent multiple animations
+            
             const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(statNumber => {
+            
+            statNumbers.forEach((statNumber, index) => {
+                // Reset to 0 first
+                statNumber.textContent = '0';
+                
                 const target = parseInt(statNumber.getAttribute('data-count'));
-                animateValue(statNumber, 0, target, 3000); // 3 seconds duration
+                let current = 0;
+                const duration = 400; // 0.4 seconds (ultra-fast)
+                const increment = target / (duration / 16); // 60fps
+                let lastUpdate = 0;
+                
+                function updateNumber(timestamp) {
+                    if (timestamp - lastUpdate >= 16) { // Update every frame (~60fps)
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            statNumber.textContent = target;
+                            return; // Stop animation for this number
+                        }
+                        statNumber.textContent = Math.floor(current);
+                        lastUpdate = timestamp;
+                    }
+                    requestAnimationFrame(updateNumber);
+                }
+                
+                // Minimal stagger delay for immediate effect
+                setTimeout(() => {
+                    requestAnimationFrame(updateNumber);
+                }, index * 10); // Ultra-minimal 10ms stagger
             });
+            
+            statsAnimated = true;
         }
 
-        // Initialize stats animation when in viewport
-        const statsSection = document.querySelector('.stats');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    observer.unobserve(entry.target);
+        // Check if stats section is visible when page loads
+        function checkStatsVisibility() {
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                const rect = statsSection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
+                
+                if (isVisible) {
+                    animateStats(); // No delay - immediate animation
+                    window.removeEventListener('scroll', checkStatsVisibility);
                 }
-            });
-        }, { threshold: 0.5 });
+            }
+        }
 
-        observer.observe(statsSection);
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            setTimeout(checkStatsVisibility, 100); // Minimal 100ms delay
+        });
+
+        // Also check on scroll
+        window.addEventListener('scroll', checkStatsVisibility);
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2563,7 +2695,7 @@
 
         // Add animation to elements on scroll
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .blog-post, .team-member');
+            const elements = document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .team-member, .course-card');
             const sections = document.querySelectorAll('section');
 
             elements.forEach(element => {
@@ -2586,7 +2718,7 @@
         };
 
         // Set initial state for animated elements
-        document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .blog-post, .team-member').forEach(el => {
+        document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .team-member, .course-card').forEach(el => {
             el.style.opacity = "0";
             el.style.transform = "translateY(30px)";
             el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
@@ -2603,59 +2735,6 @@
         window.addEventListener('scroll', animateOnScroll);
         // Trigger once on load
         window.addEventListener('load', animateOnScroll);
-
-        // Testimonial Slider
-        let currentSlide = 0;
-        const testimonialItems = document.querySelectorAll('.testimonial-item');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.querySelector('.testimonial-prev');
-        const nextBtn = document.querySelector('.testimonial-next');
-
-        function showSlide(index) {
-            testimonialItems.forEach(item => item.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            testimonialItems[index].classList.add('active');
-            dots[index].classList.add('active');
-            currentSlide = index;
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % testimonialItems.length;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + testimonialItems.length) % testimonialItems.length;
-            showSlide(currentSlide);
-        }
-
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
-        });
-
-        // Auto slide
-        setInterval(nextSlide, 5000);
-
-        // Typing effect for hero paragraph
-        const heroText = "نقدم حلولاً تدريبية واستشارية متكاملة لتحقيق التميز والنمو المستدام";
-        const heroParagraph = document.querySelector('.hero p');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < heroText.length) {
-                heroParagraph.innerHTML = heroText.substring(0, i + 1);
-                i++;
-                setTimeout(typeWriter, 30);
-            } else {
-                heroParagraph.style.borderRight = 'none';
-            }
-        }
-
-        // Start typing after hero animation
-        setTimeout(typeWriter, 1500);
     </script>
 </body>
 </html>
