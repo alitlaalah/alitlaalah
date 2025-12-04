@@ -88,11 +88,13 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Tajawal', 'Arial', sans-serif;
             background-color: var(--white);
             color: var(--text-dark);
             line-height: 1.7;
             overflow-x: hidden;
+            direction: rtl;
+            text-align: right;
         }
 
         .container {
@@ -143,34 +145,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 36px;
+            gap: 8px;
+            padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            gap: 10px;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.4s;
-            z-index: -1;
-        }
-
-        .btn:hover:before {
-            width: 100%;
+            text-align: center;
+            line-height: 1;
         }
 
         .btn-primary {
@@ -185,26 +169,26 @@
         }
 
         .btn-secondary {
-            background: var(--primary-blue);
-            color: var(--white);
-            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--secondary-gold);
+            border: 2px solid var(--secondary-gold);
         }
 
         .btn-secondary:hover {
-            background: var(--primary-dark);
+            background: var(--secondary-gold);
             color: var(--white);
-            transform: translateY(-3px);
         }
 
         .btn-cyber {
             background: var(--gradient-cyber);
             color: var(--white);
-            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+            font-size: 0.9rem;
+            border: 2px solid transparent;
         }
 
         .btn-cyber:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
         }
 
         .btn-small {
@@ -212,12 +196,16 @@
             font-size: 0.9rem;
         }
 
-        /* Header Styles - Enhanced */
+        /* ===========================================
+           HEADER & NAVIGATION STYLES
+           =========================================== */
+
+        /* Header Base Styles */
         header {
             background: rgba(15, 26, 48, 0.95);
             backdrop-filter: blur(15px);
             color: var(--white);
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -227,30 +215,32 @@
         }
 
         header.scrolled {
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             background: rgba(15, 26, 48, 0.98);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .header-container {
+        /* Navigation Container */
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 1rem;
         }
 
+        /* Logo Styles */
         .logo {
             display: flex;
             align-items: center;
-            position: relative;
+            text-decoration: none;
+            flex-shrink: 0;
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            margin-left: 15px;
+            margin-left: 12px;
             border: 3px solid var(--secondary-gold);
             transition: var(--transition);
         }
@@ -260,8 +250,8 @@
         }
 
         .logo h1 {
-            font-size: 1.5rem;
-            margin-right: 10px;
+            font-size: 1.4rem;
+            margin-right: 8px;
             color: var(--white);
             font-weight: 800;
             position: relative;
@@ -283,35 +273,94 @@
             border-radius: 2px;
         }
 
-        nav ul {
+        /* Mobile Menu Toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1003;
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            width: 50px;
+            height: 50px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Navigation Links */
+        .nav-links {
             display: flex;
             list-style: none;
-            justify-content: space-around;
-            padding: 0 20px;
-        }
-
-        nav ul li {
+            gap: 0.5rem;
             margin: 0;
-            position: relative;
+            padding: 0;
         }
 
-        nav ul li a {
+        .nav-links li a {
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
-            position: relative;
-            padding: 15px 25px;
-            font-size: 1rem;
+            padding: 12px 18px;
+            font-size: 0.95rem;
             border-radius: 8px;
+            position: relative;
+            display: block;
         }
 
-        nav ul li a:after {
+        .nav-links li a:hover {
+            color: var(--secondary-gold);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links li a:after {
             content: '';
             position: absolute;
             bottom: 0;
-            right: 0;
-            left: auto;
+            right: 50%;
+            transform: translateX(50%);
             width: 0;
             height: 2px;
             background: var(--secondary-gold);
@@ -319,30 +368,17 @@
             border-radius: 2px;
         }
 
-        nav ul li a:hover {
-            color: var(--secondary-gold);
+        .nav-links li a:hover:after {
+            width: 80%;
         }
 
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-
-        .header-actions {
+        /* Navigation Actions */
+        .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
+            flex-shrink: 0;
         }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
 
         /* Enhanced Hero Section */
         .hero {
@@ -396,8 +432,7 @@
             margin-right: auto;
             animation: fadeInUp 1s ease-out 0.3s both;
             border-right: 3px solid var(--secondary-gold);
-            white-space: nowrap;
-            overflow: hidden;
+            padding-right: 20px;
         }
 
         .hero-buttons {
@@ -534,10 +569,12 @@
             margin-bottom: 1.5rem;
         }
 
+        /* إصلاح محاذاة القيم - التصحيح الكامل هنا */
         .about-values ul {
             list-style: none;
             padding: 0;
-            text-align: left;
+            text-align: right;
+            margin: 0;
         }
 
         .about-values ul li {
@@ -546,49 +583,35 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            justify-content: flex-end;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .about-values ul li:last-child {
+            border-bottom: none;
         }
 
         .about-values ul li i {
             color: var(--secondary-gold);
             flex-shrink: 0;
+            font-size: 1.2rem;
+            order: 1;
+            margin-right: 0;
+            margin-left: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        .stats-card {
-            background: var(--gradient-primary);
-            color: var(--white);
-        }
-
-        .stats-card h3 {
-            color: var(--white);
-        }
-
-        .about-stats {
-            display: flex;
-            justify-content: space-around;
-            gap: 1rem;
-        }
-
-        .about-stat {
-            text-align: center;
+        .about-values ul li span {
+            order: 2;
+            text-align: right;
             flex: 1;
-        }
-
-        .about-stat h4 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, var(--secondary-gold), var(--accent-teal));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stats-card .about-stat h4 {
-            -webkit-text-fill-color: var(--white);
-        }
-
-        .about-stat p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            padding-right: 30px;
         }
 
         /* Enhanced Stats Section */
@@ -765,6 +788,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            text-align: right;
         }
 
         .service-content h3 {
@@ -783,30 +807,7 @@
             font-size: 1.2rem;
         }
 
-        .service-link {
-            color: var(--secondary-gold);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-            margin-top: auto;
-        }
-
-        .service-link i {
-            margin-right: 8px;
-            transition: var(--transition);
-        }
-
-        .service-link:hover {
-            color: var(--accent-orange);
-        }
-
-        .service-link:hover i {
-            transform: translateX(-8px);
-        }
-
-        /* تحسين قسم العملاء */
+        /* قسم العملاء */
         .clients {
             padding: 4rem 0 1rem 0;
             background: var(--light-gray);
@@ -869,10 +870,6 @@
             display: block;
         }
 
-        .client-logo:hover img {
-            transform: scale(1.1);
-        }
-
         @keyframes client-scroll {
             0% {
                 transform: translateX(0);
@@ -882,7 +879,7 @@
             }
         }
 
-        /* قسم الدورات الجديد */
+        /* قسم الدورات */
         .courses {
             background: var(--white);
             position: relative;
@@ -890,8 +887,9 @@
 
         .courses-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .course-card {
@@ -901,10 +899,306 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Course Link Menu Styles */
+        .course-link-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+        }
+
+        .course-link-trigger {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--secondary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-link-trigger:hover {
+            background: var(--white);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .course-link-trigger i {
+            color: var(--secondary-gold);
+            font-size: 14px;
+        }
+
+        .course-link-popup {
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            padding: 15px;
+            min-width: 280px;
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            border: 1px solid var(--medium-gray);
+        }
+
+        .course-link-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .course-link-popup::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            border-left: 1px solid var(--medium-gray);
+            border-top: 1px solid var(--medium-gray);
+            transform: rotate(45deg);
+        }
+
+        .popup-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .link-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--light-gray);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .course-link-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 12px;
+            color: var(--text-dark);
+            outline: none;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .copy-btn {
+            background: var(--gradient-gold);
+            color: var(--white);
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 60px;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .copy-btn.copied {
+            background: var(--accent-cyber);
+        }
+
+        .share-options {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .share-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+
+
+        .share-facebook {
+            background: #1877F2;
+            color: white;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Course Highlight Animation */
+        .course-card.highlighted {
+            position: relative;
+            z-index: 5;
+            animation: courseHighlight 3s ease-out;
+        }
+
+        .course-card.highlighted::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, var(--secondary-gold), var(--accent-orange), var(--secondary-gold));
+            border-radius: 24px;
+            z-index: -1;
+            animation: glowBorder 3s ease-out;
+        }
+
+        .course-card.highlighted .course-badge {
+            background: linear-gradient(45deg, var(--accent-orange), var(--secondary-gold));
+            animation: badgePulse 2s ease-out;
+        }
+
+        @keyframes courseHighlight {
+            0% {
+                transform: scale(1) translateY(0);
+                box-shadow: var(--shadow);
+            }
+            20% {
+                transform: scale(1.02) translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+            40% {
+                transform: scale(1.05) translateY(-8px);
+                box-shadow: 0 25px 60px rgba(212, 175, 55, 0.4);
+            }
+            70% {
+                transform: scale(1.02) translateY(-3px);
+                box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                box-shadow: var(--shadow);
+            }
+        }
+
+        @keyframes glowBorder {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            40% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes badgePulse {
+            0% {
+                transform: scale(1);
+            }
+            20% {
+                transform: scale(1.1);
+            }
+            40% {
+                transform: scale(1.2);
+                box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+            }
+            70% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Course notification popup */
+        .course-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--gradient-gold);
+            color: var(--white);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1001;
+            transform: translateX(400px);
+            transition: var(--transition);
+            max-width: 300px;
+            font-weight: 600;
+        }
+
+        .course-notification.show {
+            transform: translateX(0);
+        }
+
+        .course-notification .close-btn {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .course-notification .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .course-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
 
@@ -948,57 +1242,65 @@
 
         .course-content {
             padding: 2rem;
-        }
-
-        .course-meta {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .course-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: right;
         }
 
         .course-content h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            background: var(--gradient-gold);
+            color: var(--white);
             font-weight: 700;
-            line-height: 1.4;
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-align: center;
+            margin-bottom: 1rem;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .course-content p {
-            color: var(--text-light);
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
         .course-instructor {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+            gap: 1.2rem;
+            margin: 1rem 0;
+            padding: 1.2rem;
             background: var(--light-gray);
-            border-radius: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--medium-gray);
+            transition: var(--transition);
+            min-height: 80px;
+        }
+
+        .course-instructor:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: var(--secondary-gold);
+            transform: translateY(-2px);
         }
 
         .instructor-image {
-            width: 60px;
-            height: 60px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
             background: var(--gradient-primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
+            overflow: hidden;
+            border: 3px solid var(--secondary-gold);
         }
 
         .instructor-image img {
@@ -1008,34 +1310,46 @@
             object-fit: cover;
         }
 
+        .instructor-info {
+            flex: 1;
+            text-align: right;
+        }
+
         .instructor-info h4 {
             color: var(--primary-dark);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
             font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.3;
         }
 
         .instructor-info p {
             color: var(--text-light);
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        .course-link {
-            color: var(--secondary-gold);
-            text-decoration: none;
-            font-weight: 600;
+        .course-footer {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            transition: var(--transition);
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--medium-gray);
         }
 
-        .course-link:hover {
-            color: var(--accent-orange);
+        .registration-buttons {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
 
-        .course-link:hover i {
-            transform: translateX(-5px);
+        .registration-buttons .btn {
+            flex: 1;
+            max-width: 48%;
         }
 
         .courses-cta {
@@ -1043,7 +1357,7 @@
             margin-top: 4rem;
         }
 
-        /* Enhanced Testimonials Section */
+        /* قسم آراء العملاء */
         .testimonials {
             background: var(--light-gray);
             position: relative;
@@ -1053,8 +1367,8 @@
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-            margin: 1rem;
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .testimonial {
@@ -1062,10 +1376,9 @@
             border-radius: 20px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
             position: relative;
-            padding: 1.5rem;
-            margin: 0.5rem;
+            padding: 2rem;
+            text-align: right;
         }
 
         .testimonial:hover {
@@ -1074,16 +1387,14 @@
         }
 
         .testimonial-content {
-            padding: 2rem;
             position: relative;
-            text-align: center;
         }
 
         .quote {
             position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
+            top: 15px;
+            right: 20px;
+            font-size: 2.5rem;
             color: var(--secondary-gold);
             font-family: serif;
             opacity: 0.3;
@@ -1093,35 +1404,56 @@
             font-size: 1.1rem;
             color: var(--text-light);
             line-height: 1.8;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             padding: 1rem 0 0 0;
             margin: 1rem 0 0 0;
             border-top: 1px solid var(--medium-gray);
         }
 
         .author-image {
-            font-size: 3rem;
-            color: var(--primary-blue);
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
             flex-shrink: 0;
+            overflow: hidden;
+            border: 3px solid var(--secondary-gold);
+        }
+
+        .author-image img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            flex: 1;
+            text-align: right;
         }
 
         .author-info h4 {
             color: var(--primary-dark);
             margin-bottom: 0.3rem;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
         }
 
         .author-info p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin: 0;
         }
 
@@ -1165,7 +1497,6 @@
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.8;
         }
-
 
         /* Enhanced Team Section */
         .team {
@@ -1217,37 +1548,9 @@
             border-radius: 0;
         }
 
-        .member-social {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .team-member:hover .member-social {
-            transform: translateY(0);
-        }
-
-        .member-social a {
-            color: var(--white);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .member-social a:hover {
-            color: var(--secondary-gold);
-            transform: scale(1.2);
-        }
-
         .member-info {
             padding: 2rem;
+            text-align: right;
         }
 
         .member-info h3 {
@@ -1268,70 +1571,6 @@
             line-height: 1.6;
             font-size: 1.1rem;
             font-weight: 500;
-        }
-
-        /* Newsletter Section */
-        .newsletter {
-            background: var(--gradient-primary);
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .newsletter-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .newsletter-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .newsletter-form {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text-dark);
-        }
-
-        .newsletter-form input::placeholder {
-            color: var(--text-light);
-        }
-
-        .newsletter-form button {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            background: var(--secondary-gold);
-            color: var(--white);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--accent-orange);
-            transform: translateY(-2px);
         }
 
         /* Contact Section */
@@ -1382,18 +1621,34 @@
         .contact-details p {
             color: var(--text-light);
             margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .contact-details a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .contact-form-container {
+            width: 100%;
         }
 
         .contact-form-main {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            width: 100%;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .contact-form-main input,
@@ -1405,6 +1660,7 @@
             font-family: 'Tajawal', sans-serif;
             transition: var(--transition);
             width: 100%;
+            text-align: right;
         }
 
         .contact-form-main input:focus,
@@ -1457,6 +1713,10 @@
             border: 2px solid var(--secondary-gold);
         }
 
+        .footer-column {
+            text-align: right;
+        }
+
         .footer-column h3 {
             font-size: 1.6rem;
             margin-bottom: 2rem;
@@ -1485,22 +1745,50 @@
 
         .footer-column ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: right;
         }
 
         .footer-column ul li {
             margin-bottom: 1.2rem;
+            text-align: right;
         }
 
-        .footer-column ul li a {
+        .footer-column ul li a,
+        .footer-column ul li span {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
+            display: block;
+            text-align: right;
             font-size: 1.05rem;
+            direction: rtl;
+            justify-content: flex-end;
         }
 
-        .footer-column ul li a i {
+        /* Specific fix for quick links section */
+        .footer-column:nth-child(2) ul li a {
+            text-align: right;
+            justify-content: flex-start;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .footer-column:nth-child(2) ul li a::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-gold);
+            border-radius: 50%;
+        }
+
+        .footer-column ul li a i,
+        .footer-column ul li span i {
             margin-left: 10px;
             font-size: 0.9rem;
             transition: var(--transition);
@@ -1511,82 +1799,11 @@
             transform: translateX(-8px);
         }
 
-        .footer-column ul li a:hover i {
-            transform: translateX(-5px);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 12px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--secondary-gold);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .contact-form button {
-            margin-top: 1rem;
-            width: 100%;
-        }
-
-        .newsletter-form-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .newsletter-form-footer input {
-            padding: 8px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-size: 0.9rem;
-        }
-
-        .newsletter-form-footer input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .newsletter-form-footer button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            background: var(--secondary-gold);
-            color: var(--white);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-form-footer button:hover {
-            background: var(--accent-orange);
-        }
-
         .social-links {
             display: flex;
             gap: 1.2rem;
             margin-top: 2rem;
+            justify-content: flex-start;
         }
 
         .social-links a {
@@ -1618,6 +1835,54 @@
             font-size: 1.05rem;
         }
 
+        /* تنسيق النشرة البريدية في الفوتر */
+        .newsletter-form-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-form-footer input {
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-size: 1rem;
+            font-family: 'Tajawal', sans-serif;
+            transition: var(--transition);
+            text-align: right;
+        }
+
+        .newsletter-form-footer input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: right;
+        }
+
+        .newsletter-form-footer input:focus {
+            outline: none;
+            border-color: var(--secondary-gold);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-form-footer button {
+            padding: 15px 25px;
+            background: var(--gradient-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form-footer button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
         /* Scroll Progress Bar */
         #scroll-progress {
             position: fixed;
@@ -1628,18 +1893,6 @@
             background: var(--gradient-gold);
             z-index: 1001;
             transition: width 0.3s ease;
-        }
-
-        /* New Features */
-
-        /* Particles Background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            right: 0;
-            z-index: 0;
         }
 
         /* Floating Action Button */
@@ -1674,67 +1927,180 @@
             box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
         }
 
+        .floating-btn .tooltip {
+            position: absolute;
+            left: 70px;
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-btn .tooltip:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -6px;
+            transform: translateY(-50%);
+            border-width: 6px 0 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--primary-dark);
+        }
+
+        .floating-btn:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
         .whatsapp-btn {
             background: #25D366;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.1);
             box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
         }
 
-        .floating-btn .tooltip {
-            position: absolute;
-            right: 70px;
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .floating-btn:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Enhanced Responsive Design */
-        @media (max-width: 1200px) {
-            .hero h2 {
-                font-size: 4rem;
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                height: 100vh;
+                background: rgba(15, 26, 48, 0.98);
+                backdrop-filter: blur(15px);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+                padding: 100px 2rem 2rem;
+                z-index: 1002;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
             }
-            
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 1rem 1.5rem;
+                font-size: 1.1rem;
+                border-radius: 12px;
+                width: 100%;
+                border-right: 3px solid transparent;
+            }
+
+            .nav-links li a:hover {
+                background: rgba(212, 175, 55, 0.15);
+                color: var(--secondary-gold);
+                border-right-color: var(--secondary-gold);
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+                margin-top: auto;
+            }
+
+            .nav-actions .btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+
+            .section {
+                padding: 2.5rem 0;
+            }
+
+            .section-title {
+                margin-bottom: 2.5rem;
+            }
+
             .section-title h2 {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
-            
-            .client-logo {
-                flex: 0 0 280px;
-                height: 160px;
-            }
-        }
 
-        @media (max-width: 992px) {
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            /* Hero Section Mobile Fixes */
+            .hero {
+                height: 90vh;
+                padding: 2rem 1rem;
+                background-attachment: scroll;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
             .hero h2 {
-                font-size: 3.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
             }
 
-            .section-title h2 {
-                font-size: 2.5rem;
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
             }
 
-            .client-logo {
-                flex: 0 0 260px;
-                height: 150px;
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            /* Layout Grid Fixes */
+            .courses-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .services-container {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .about-container {
@@ -1742,120 +2108,20 @@
                 gap: 2rem;
             }
 
-            .about-stats {
-                flex-direction: column;
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .team-container {
+                grid-template-columns: 1fr;
                 gap: 2rem;
             }
-        }
 
-        @media (max-width: 992px) {
-            .logo h1 {
-                font-size: 1.7rem;
-            }
-
-            .logo-img {
-                width: 75px;
-                height: 75px;
-            }
-
-            nav ul li a {
-                padding: 8px 12px;
-                font-size: 0.9rem;
-            }
-
-            .header-actions {
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .logo {
-                order: 1;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-
-            nav {
-                order: 2;
-                width: 100%;
-                margin-top: 0;
-                display: none;
-                background: rgba(15, 26, 48, 0.95);
-                border-radius: 10px;
-                padding: 1rem;
-            }
-
-            nav.active {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            nav ul li a {
-                padding: 12px 20px;
-                text-align: center;
-            }
-
-            .mobile-toggle {
-                display: block;
-                position: absolute;
-                top: 1.5rem;
-                right: 2rem;
-            }
-            
-            .header-actions {
-                order: 3;
-                justify-content: center;
-                margin-top: 1rem;
-            }
-
-            .language-selector {
-                margin-top: 0;
-                margin-right: 0;
-                margin-left: 0;
-            }
-
-            .hero h2 {
-                font-size: 2.8rem;
-            }
-
-            .hero p {
-                font-size: 1.3rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
+            .testimonial-grid {
+                grid-template-columns: 1fr;
                 gap: 1.5rem;
-            }
-
-            .client-logo {
-                flex: 0 0 220px;
-                height: 125px;
-                padding: 2rem;
-            }
-
-            .client-logo img {
-                max-height: 80px;
-            }
-
-            .floating-action {
-                bottom: 20px;
-                left: 20px;
-            }
-
-            .floating-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-                gap: 1rem;
             }
 
             .contact-container {
@@ -1863,89 +2129,154 @@
                 gap: 2rem;
             }
 
-            .contact-item {
+            /* Course Cards Mobile */
+            .course-footer {
                 flex-direction: column;
-                text-align: center;
                 gap: 1rem;
+                align-items: stretch;
             }
 
-            .form-group {
+            .registration-buttons {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 0.8rem;
+                width: 100%;
+                align-items: stretch;
+            }
+
+            .registration-buttons .btn {
+                width: 100%;
+                justify-content: center;
+                max-width: 100%;
+                flex: none;
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            /* Footer Improvements */
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .cta-content p {
+                font-size: 1.1rem;
+            }
+
+            /* Floating Action Mobile */
+            .floating-action {
+                bottom: 20px;
+                left: 20px;
+                gap: 10px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .floating-btn .tooltip {
+                display: none;
             }
         }
 
         @media (max-width: 576px) {
             .container {
-                padding: 0 1.5rem;
+                padding: 0 0.75rem;
             }
 
             .section {
-                padding: 6rem 0;
-            }
-
-            .hero h2 {
-                font-size: 2.3rem;
+                padding: 2rem 0;
             }
 
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
 
-            .stat-number {
-                font-size: 3.2rem;
+            .section-title p {
+                font-size: 0.95rem;
             }
 
-            .client-slider {
-                padding: 1rem 0;
+            /* Smaller Mobile Navigation */
+            .nav-toggle {
+                width: 45px;
+                height: 45px;
             }
 
-            .client-track {
+            .nav-menu {
+                width: 100%;
+                padding: 90px 1.5rem 1.5rem;
+            }
+
+            .nav-links li a {
+                padding: 0.9rem 1.2rem;
+                font-size: 1rem;
+            }
+
+            .nav-actions .btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Compact Hero Section */
+            .hero {
+                height: 85vh;
+                padding: 1.5rem 0.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons .btn {
+                max-width: 250px;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            /* Stats Section Mobile */
+            .stats-container {
+                grid-template-columns: 1fr;
                 gap: 1.5rem;
+                padding: 0 0.5rem;
+            }
+
+            /* Client Slider Mobile */
+            .client-slider {
+                height: 150px;
+                margin-bottom: 20px;
             }
 
             .client-logo {
-                flex: 0 0 200px;
-                height: 115px;
-                padding: 1.8rem;
+                padding: 15px;
+                min-width: 140px;
+                height: 100px;
             }
 
             .client-logo img {
-                max-height: 75px;
+                max-width: 120px;
+                max-height: 70px;
             }
-            
+
+            /* Floating Action Buttons on very small screens */
             .floating-action {
                 bottom: 15px;
                 left: 15px;
-            }
-        }
-
-        /* Extra small screens - 400px and below */
-        @media (max-width: 400px) {
-            .client-slider {
-                padding: 0.5rem 0;
+                gap: 8px;
             }
 
-            .client-track {
-                gap: 1rem;
-            }
-
-            .client-logo {
-                flex: 0 0 180px;
-                height: 100px;
-                padding: 1.5rem;
-            }
-
-            .client-logo img {
-                max-height: 65px;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .hero h2 {
-                font-size: 2.1rem;
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -1957,33 +2288,39 @@
 
     <!-- Header -->
     <header id="header">
-        <div class="container header-container">
-            <button class="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="logo">
-                <img src="Image/logo.jpg" alt="الإطلالة العربية" class="logo-img">
-                <h1>الإطلالة <span>العربية</span></h1>
-            </div>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#about">من نحن</a></li>
-                    <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#courses">دوراتنا</a></li>
-                    <li><a href="#clients">عملاؤنا</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="#contact" class="btn btn-primary btn-small" style="margin-left: 20px;">اطلب استشارة</a>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo" aria-label="الإطلالة العربية - الصفحة الرئيسية">
+                    <img src="Image/logo.jpg" alt="شعار الإطلالة العربية" class="logo-img">
+                    <h1>الإطلالة <span>العربية</span></h1>
+                </a>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                </button>
+
+                <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
+                    <ul class="nav-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#testimonials">آراء العملاء</a></li>
+                        <li><a href="#courses">دوراتنا</a></li>
+                        <li><a href="#clients">عملاؤنا</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                    <div class="nav-actions">
+                        <a href="#contact" class="btn btn-primary btn-small">اطلب استشارة</a>
+                    </div>
+                </nav>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div id="particles-js"></div>
         <div class="floating-shapes">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
@@ -1993,8 +2330,8 @@
             <h2>الريادة في التدريب والاستشارات</h2>
             <p>نقدم حلولاً تدريبية واستشارية متكاملة تساعد مؤسساتكم على تحقيق التميز والنمو المستدام بمعايير عالمية</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">اكتشف خدماتنا</a>
-                <a href="#about" class="btn btn-secondary">تعرف علينا <i class="fas fa-user"></i></a>
+                <a href="#services" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">اكتشف خدماتنا</a>
+                <a href="#about" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1.1rem;">تعرف علينا <i class="fas fa-user"></i></a>
             </div>
         </div>
         <div class="hero-scroll-indicator">
@@ -2035,10 +2372,10 @@
                         </div>
                         <h3>قيمنا</h3>
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> الابتكار والتميز</li>
-                            <li><i class="fas fa-check-circle"></i> الثقة والشفافية</li>
-                            <li><i class="fas fa-check-circle"></i> الشراكة الاستراتيجية</li>
-                            <li><i class="fas fa-check-circle"></i> التطوير المستمر</li>
+                            <li><i class="fas fa-check-circle"></i> <span>الابتكار والتميز</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span>الثقة والشفافية</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span>الشراكة الاستراتيجية</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span>التطوير المستمر</span></li>
                         </ul>
                     </div>
                 </div>
@@ -2119,6 +2456,65 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء عملائنا</h2>
+                <p>ماذا قال عملاؤنا عن خدماتنا وتجربتهم معنا</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="quote">"</div>
+                        <p>استفدنا كثيراً من خدمات الأمن السيبراني. الفريق قدم حلولاً شاملة وحماية قوية لأنظمتنا. شكراً لكم على الاحترافية والجودة العالية.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="Image/Image9.jpg" alt="نورا خالد محمود" class="member-photo">
+                            </div>
+                            <div class="author-info">
+                                <h4>نورا خالد محمود</h4>
+                                <p>مديرة تقنية المعلومات - جامعة المستقبل</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="quote">"</div>
+                        <p>شراكة طويلة الأمد مع الإطلالة العربية. خدماتهم التدريبية والاستشارية ساعدتنا في تحقيق أهدافنا وتطوير كفاءات فريق العمل بشكل كبير.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="Image/Image10.jpg" alt="عبد الرحمن يوسف" class="member-photo">
+                            </div>
+                            <div class="author-info">
+                                <h4>عبد الرحمن يوسف</h4>
+                                <p>الرئيس التنفيذي - مجموعة الإخلاص التجارية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="quote">"</div>
+                        <p>البرنامج التدريبي لتطوير الجودة كان نقطة تحول في مؤسستنا. تعلمنا أسس الجودة وتطبيقها عملياً. شكراً للفريق المحترف والمتابعة المتميزة.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="Image/Image8.jpg" alt="سارة محمود إبراهيم" class="member-photo">
+                            </div>
+                            <div class="author-info">
+                                <h4>سارة محمود إبراهيم</h4>
+                                <p>مديرة الجودة - شركة البناء الحديث</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Courses Section -->
     <section class="courses section" id="courses">
         <div class="container">
@@ -2127,15 +2523,39 @@
                 <p>اكتشف أحدث الدورات التدريبية التي نقدمها بالشراكة مع خبراء متخصصين</p>
             </div>
             <div class="courses-container">
-                <div class="course-card">
+                <div class="course-card" data-category="languages" data-course-id="course-arabic-grammar">
                     <div class="course-badge">جديد</div>
+                    
+                    <!-- Course Link Menu -->
+                    <div class="course-link-menu">
+                        <div class="course-link-trigger" onclick="toggleCourseLinkPopup('course-arabic-grammar')">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="course-link-popup" id="popup-course-arabic-grammar">
+                            <div class="popup-title">رابط الدورة</div>
+                            <div class="link-container">
+                                <input type="text" class="course-link-input" id="link-course-arabic-grammar" readonly>
+                                <button class="copy-btn" onclick="copyCourseLink('course-arabic-grammar')">
+                                    <i class="fas fa-copy"></i> نسخ
+                                </button>
+                            </div>
+                            <div class="share-options">
+                                <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp('course-arabic-grammar')">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                                <button class="share-btn share-facebook" onclick="shareOnFacebook('course-arabic-grammar')">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="course-image">
                         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تعليم القواعد النحوية">
                     </div>
                     <div class="course-content">
-                        <h3>تعليم القواعد النحوية لغير الناطقين بالعربية</h3>
+                        <h3 style="font-size: 0.9rem; padding: 15px 30px;">تعليم القواعد النحوية لغير الناطقين بالعربية</h3>
                         <p>دورة متخصصة لتعليم قواعد اللغة العربية بشكل مبسط وسهل للطلاب غير الناطقين بالعربية، تشمل جميع المستويات من المبتدئ إلى المتقدم.</p>
-                        
                         <div class="course-instructor">
                             <div class="instructor-image">
                                 <img src="Image/Image3.png" alt="د. محمد عبدالمنعم عبدالحي" class="member-photo">
@@ -2145,20 +2565,50 @@
                                 <p>أستاذ اللغة العربية - جامعة الطائف وجامعة طنطا</p>
                             </div>
                         </div>
-                        
-                        <a href="#" class="course-link">سجل في الدورة الآن</a>
+                        <div class="course-footer">
+                            <div class="registration-buttons">
+                                <a href="#contact" class="btn btn-secondary">سجل الآن</a>
+                                <a href="https://wa.me/201101152370?text=أريد التسجيل في دورة تعليم القواعد النحوية لغير الناطقين بالعربية" class="btn btn-cyber" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> سجل من خلالنا
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="course-card">
+                <div class="course-card" data-category="technology" data-course-id="course-tot">
                     <div class="course-badge">الأكثر طلباً</div>
+                    
+                    <!-- Course Link Menu -->
+                    <div class="course-link-menu">
+                        <div class="course-link-trigger" onclick="toggleCourseLinkPopup('course-tot')">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="course-link-popup" id="popup-course-tot">
+                            <div class="popup-title">رابط الدورة</div>
+                            <div class="link-container">
+                                <input type="text" class="course-link-input" id="link-course-tot" readonly>
+                                <button class="copy-btn" onclick="copyCourseLink('course-tot')">
+                                    <i class="fas fa-copy"></i> نسخ
+                                </button>
+                            </div>
+                            <div class="share-options">
+                                <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp('course-tot')">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                                <button class="share-btn share-facebook" onclick="shareOnFacebook('course-tot')">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="course-image">
                         <img src="Image/Image5.jpg" alt="تدريب المدربين (TOT)">
                     </div>
                     <div class="course-content">
                         <h3>تدريب المدربين (TOT)</h3>
                         <p>دورة تدريب المدربين (TOT) التي تركز على إعداد حقائب تدريبية احترافية، وتعلم أسرار التدريب الناجح، واستخدام تقنيات VAK للتأثير والإقناع، بالإضافة إلى تطوير مهارات العرض والإلقاء والتواصل الفعال.</p>
-
                         <div class="course-instructor">
                             <div class="instructor-image">
                                 <img src="Image/Image2.png" alt="د. أميرة عبد الحي" class="member-photo">
@@ -2168,20 +2618,50 @@
                                 <p>المؤسسة والمديرة التنفيذية - تكنولوجيا التعليم والمعلومات</p>
                             </div>
                         </div>
-
-                        <a href="#" class="course-link">سجل في الدورة الآن</a>
+                        <div class="course-footer">
+                            <div class="registration-buttons">
+                                <a href="#contact" class="btn btn-secondary">سجل الآن</a>
+                                <a href="https://wa.me/201101152370?text=أريد التسجيل في دورة تدريب المدربين (TOT)" class="btn btn-cyber" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> سجل من خلالنا
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="course-card">
+                <div class="course-card" data-category="technology" data-course-id="course-cybersecurity">
                     <div class="course-badge seminar-badge">ندوة</div>
+                    
+                    <!-- Course Link Menu -->
+                    <div class="course-link-menu">
+                        <div class="course-link-trigger" onclick="toggleCourseLinkPopup('course-cybersecurity')">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="course-link-popup" id="popup-course-cybersecurity">
+                            <div class="popup-title">رابط الدورة</div>
+                            <div class="link-container">
+                                <input type="text" class="course-link-input" id="link-course-cybersecurity" readonly>
+                                <button class="copy-btn" onclick="copyCourseLink('course-cybersecurity')">
+                                    <i class="fas fa-copy"></i> نسخ
+                                </button>
+                            </div>
+                            <div class="share-options">
+                                <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp('course-cybersecurity')">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                                <button class="share-btn share-facebook" onclick="shareOnFacebook('course-cybersecurity')">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="course-image">
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ندوة توطين ثقافة الأمن السيبراني">
                     </div>
                     <div class="course-content">
                         <h3>ندوة توطين ثقافة الأمن السيبراني</h3>
                         <p>تعلم أساسيات توطين ثقافة الأمن السيبراني وأهميتها في حماية المؤسسات التعليمية من التهديدات الرقمية والحفاظ على البيانات الآمنة.</p>
-
                         <div class="course-instructor">
                             <div class="instructor-image">
                                 <img src="Image/Image6.jpg" alt="د. منال البلقاسي" class="member-photo">
@@ -2191,14 +2671,20 @@
                                 <p>مستشار ومدرب معتمد - أستاذ نظم المعلومات المساعد</p>
                             </div>
                         </div>
-
-                        <a href="#" class="course-link">سجل في الدورة الآن</a>
+                        <div class="course-footer">
+                            <div class="registration-buttons">
+                                <a href="#contact" class="btn btn-secondary">سجل الآن</a>
+                                <a href="https://wa.me/201101152370?text=أريد التسجيل في ندوة توطين ثقافة الأمن السيبراني" class="btn btn-cyber" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> سجل من خلالنا
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="courses-cta">
-                <a href="courses.html" class="btn btn-primary">استعرض جميع الدورات</a>
+                <a href="courses.html" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.2rem;">استعرض جميع الدورات</a>
             </div>
         </div>
     </section>
@@ -2263,7 +2749,7 @@
                         <div class="client-logo">
                             <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
                         </div>
-                        <!-- نسخة إضافية للتمرير اللانهائي السلس -->
+                        <!-- تكرار الشعارات للتمرير المستمر -->
                         <div class="client-logo">
                             <img src="Image/coursera.png" alt="Coursera" title="Coursera">
                         </div>
@@ -2288,7 +2774,6 @@
                         <div class="client-logo">
                             <img src="Image/linkedin-learning.png" alt="LinkedIn Learning" title="LinkedIn Learning">
                         </div>
-                        <!-- نسخة ثالثة لضمان اللانهاية -->
                         <div class="client-logo">
                             <img src="Image/coursera.png" alt="Coursera" title="Coursera">
                         </div>
@@ -2377,7 +2862,7 @@
             <div class="cta-content">
                 <h2>جاهزون لبدء رحلة التميز معاً؟</h2>
                 <p>اتصل بنا اليوم للحصول على استشارة مجانية وتصميم حل مخصص لمؤسستك</p>
-                <a href="#contact" class="btn btn-primary">اطلب استشارة مجانية</a>
+                <a href="#contact" class="btn btn-primary" style="padding: 20px 50px; font-size: 1.2rem;">اطلب استشارة مجانية</a>
             </div>
         </div>
     </section>
@@ -2406,7 +2891,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>الهاتف</h4>
-                            <p>+20 110 115 2370</p>
+                            <p>+201101152370</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2415,7 +2900,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>البريد الإلكتروني</h4>
-                            <p>info@alitlaalah.org</p>
+                            <p><a href="mailto:info@alitlaalah.org">info@alitlaalah.org</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2429,21 +2914,21 @@
                     </div>
                 </div>
                 <div class="contact-form-container">
-                    <form class="contact-form-main">
+                    <form class="contact-form-main" id="contactForm">
                         <div class="form-group">
-                            <input type="text" placeholder="الاسم الكامل" required>
+                            <input type="text" placeholder="الاسم الكامل" id="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="البريد الإلكتروني" required>
+                            <input type="email" placeholder="البريد الإلكتروني" id="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="رقم الهاتف">
+                            <input type="tel" placeholder="رقم الهاتف" id="phone">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="الموضوع" required>
+                            <input type="text" placeholder="الموضوع" id="subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="رسالتك" rows="5" required></textarea>
+                            <textarea placeholder="رسالتك" rows="5" id="message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">إرسال الرسالة <i class="fas fa-send"></i></button>
                     </form>
@@ -2482,18 +2967,18 @@
                 <div class="footer-column">
                     <h3>خدماتنا</h3>
                     <ul>
-                        <li><a href="#">التدريب المتخصص</a></li>
-                        <li><a href="#">الاستشارات الإدارية</a></li>
-                        <li><a href="#">التطوير التنظيمي</a></li>
-                        <li><a href="#">استشارات الجودة</a></li>
-                        <li><a href="#">ندوات الأمن السيبراني</a></li>
+                        <li><span>التدريب المتخصص</span></li>
+                        <li><span>الاستشارات الإدارية</span></li>
+                        <li><span>التطوير التنظيمي</span></li>
+                        <li><span>استشارات الجودة</span></li>
+                        <li><span>ندوات الأمن السيبراني</span></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>النشرة البريدية</h3>
                     <p>اشترك للحصول على أحدث الأخبار والمقالات</p>
-                    <form class="newsletter-form-footer">
-                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                    <form class="newsletter-form-footer" id="newsletterForm">
+                        <input type="email" placeholder="بريدك الإلكتروني" id="newsletterEmail" required>
                         <button type="submit">اشتراك</button>
                     </form>
                 </div>
@@ -2506,7 +2991,7 @@
 
     <!-- Floating Action Buttons -->
     <div class="floating-action">
-        <a href="https://wa.me/201101152370" class="floating-btn whatsapp-btn" target="_blank">
+        <a href="https://wa.me/201101152370" class="floating-btn whatsapp-btn" target="_blank" style="display: none;">
             <i class="fab fa-whatsapp"></i>
             <span class="tooltip">راسلنا على واتساب</span>
         </a>
@@ -2516,7 +3001,6 @@
         </a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -2524,6 +3008,10 @@
         // Header scroll effect and go to top button visibility
         const goToTopBtn = document.getElementById('go-to-top');
         const servicesSection = document.getElementById('services');
+        const aboutSection = document.getElementById('about');
+        const contactSection = document.getElementById('contact');
+        const footerSection = document.getElementById('footer');
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
         const hero = document.querySelector('.hero');
         const floatingShapes = document.querySelector('.floating-shapes');
         const scrollProgress = document.getElementById('scroll-progress');
@@ -2548,6 +3036,15 @@
                 goToTopBtn.style.display = 'none';
             }
 
+            // WhatsApp button visibility
+            const aboutTop = aboutSection.offsetTop - window.innerHeight * 0.5;
+            const footerTop = footerSection.offsetTop;
+            if (scrolled >= aboutTop && scrolled < footerTop - window.innerHeight * 0.3) {
+                whatsappBtn.style.display = 'flex';
+            } else {
+                whatsappBtn.style.display = 'none';
+            }
+
             // Parallax effect for hero
             const rate = scrolled * -0.5;
             hero.style.transform = `translateY(${rate}px)`;
@@ -2561,40 +3058,84 @@
         });
 
         // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const body = document.body;
 
-        mobileToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            mobileToggle.innerHTML = nav.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        function toggleMobileMenu() {
+            const isActive = navMenu.classList.contains('active');
+            
+            if (isActive) {
+                // Close menu
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            } else {
+                // Open menu
+                navMenu.classList.add('active');
+                navToggle.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                body.style.overflow = 'hidden';
+            }
+        }
+
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
         });
 
-        // Stats animation - Ultra-fast version
+        // Close menu when clicking on nav links
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Close menu when clicking outside of it
+        document.addEventListener('click', function(e) {
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !navToggle.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Stats animation
         let statsAnimated = false;
         
         function animateStats() {
-            if (statsAnimated) return; // Prevent multiple animations
+            if (statsAnimated) return;
             
             const statNumbers = document.querySelectorAll('.stat-number');
             
             statNumbers.forEach((statNumber, index) => {
-                // Reset to 0 first
                 statNumber.textContent = '0';
                 
                 const target = parseInt(statNumber.getAttribute('data-count'));
                 let current = 0;
-                const duration = 400; // 0.4 seconds (ultra-fast)
-                const increment = target / (duration / 16); // 60fps
+                const duration = 2000;
+                const increment = target / (duration / 16);
                 let lastUpdate = 0;
                 
                 function updateNumber(timestamp) {
-                    if (timestamp - lastUpdate >= 16) { // Update every frame (~60fps)
+                    if (timestamp - lastUpdate >= 16) {
                         current += increment;
                         if (current >= target) {
                             current = target;
                             statNumber.textContent = target;
-                            return; // Stop animation for this number
+                            return;
                         }
                         statNumber.textContent = Math.floor(current);
                         lastUpdate = timestamp;
@@ -2602,16 +3143,15 @@
                     requestAnimationFrame(updateNumber);
                 }
                 
-                // Minimal stagger delay for immediate effect
                 setTimeout(() => {
                     requestAnimationFrame(updateNumber);
-                }, index * 10); // Ultra-minimal 10ms stagger
+                }, index * 200);
             });
             
             statsAnimated = true;
         }
 
-        // Check if stats section is visible when page loads
+        // Check if stats section is visible
         function checkStatsVisibility() {
             const statsSection = document.querySelector('.stats');
             if (statsSection) {
@@ -2619,7 +3159,7 @@
                 const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
                 
                 if (isVisible) {
-                    animateStats(); // No delay - immediate animation
+                    animateStats();
                     window.removeEventListener('scroll', checkStatsVisibility);
                 }
             }
@@ -2627,7 +3167,7 @@
 
         // Initialize when page loads
         window.addEventListener('load', function() {
-            setTimeout(checkStatsVisibility, 100); // Minimal 100ms delay
+            setTimeout(checkStatsVisibility, 100);
         });
 
         // Also check on scroll
@@ -2649,53 +3189,42 @@
                     });
                     
                     // Close mobile menu if open
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    if (navMenu.classList.contains('active')) {
+                        toggleMobileMenu();
                     }
                 }
             });
         });
 
-        // Initialize Particles.js
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#d4af37" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#d4af37",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
-            },
-            retina_detect: true
+        // Form submission handlers
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            alert(`شكراً ${name}، تم استلام رسالتك بنجاح!\nسنقوم بالرد عليك على البريد: ${email}\nفي أقرب وقت ممكن.`);
+            this.reset();
+            
+            // Scroll to top of contact section
+            setTimeout(() => {
+                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 500);
+        });
+
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('newsletterEmail').value;
+            
+            alert(`شكراً لك على الاشتراك في النشرة البريدية!\nتم إضافة البريد: ${email}\nستصلك آخر أخبارنا قريباً.`);
+            this.reset();
         });
 
         // Add animation to elements on scroll
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .team-member, .course-card');
+            const elements = document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .team-member, .course-card, .testimonial');
             const sections = document.querySelectorAll('section');
 
             elements.forEach(element => {
@@ -2718,7 +3247,7 @@
         };
 
         // Set initial state for animated elements
-        document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .team-member, .course-card').forEach(el => {
+        document.querySelectorAll('.service-card, .stat-item, .client-logo, .about-card, .team-member, .course-card, .testimonial').forEach(el => {
             el.style.opacity = "0";
             el.style.transform = "translateY(30px)";
             el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
@@ -2733,8 +3262,265 @@
         });
 
         window.addEventListener('scroll', animateOnScroll);
-        // Trigger once on load
         window.addEventListener('load', animateOnScroll);
+
+        // Course Link Menu Functionality
+        const courseLinks = {
+            'course-arabic-grammar': window.location.href.split('#')[0] + '#course-arabic-grammar',
+            'course-tot': window.location.href.split('#')[0] + '#course-tot',
+            'course-cybersecurity': window.location.href.split('#')[0] + '#course-cybersecurity'
+        };
+
+        // Initialize course links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Determine the correct base URL based on current page
+            let baseUrl;
+            if (window.location.pathname.includes('courses.html')) {
+                baseUrl = window.location.origin + '/courses.html';
+            } else {
+                baseUrl = window.location.origin + '/index.html';
+            }
+            
+            // Handle local file:// URLs by using a placeholder domain
+            if (window.location.protocol === 'file:') {
+                baseUrl = 'https://alitlaalah.org' + window.location.pathname;
+                if (!window.location.pathname.includes('courses.html')) {
+                    baseUrl = 'https://alitlaalah.org/index.html';
+                } else {
+                    baseUrl = 'https://alitlaalah.org/courses.html';
+                }
+            }
+            
+            Object.keys(courseLinks).forEach(courseId => {
+                const linkInput = document.getElementById('link-' + courseId);
+                if (linkInput) {
+                    linkInput.value = baseUrl + '#' + courseId;
+                }
+            });
+
+            // Check if user came from external course link
+            checkForCourseHighlight();
+        });
+
+        function toggleCourseLinkPopup(courseId) {
+            // Close all other popups first
+            document.querySelectorAll('.course-link-popup').forEach(popup => {
+                popup.classList.remove('active');
+            });
+            
+            // Toggle current popup
+            const popup = document.getElementById('popup-' + courseId);
+            if (popup) {
+                popup.classList.toggle('active');
+            }
+        }
+
+        function copyCourseLink(courseId) {
+            const linkInput = document.getElementById('link-' + courseId);
+            const copyBtn = linkInput.parentNode.querySelector('.copy-btn');
+            
+            if (linkInput && copyBtn) {
+                // Select and copy the text
+                linkInput.select();
+                linkInput.setSelectionRange(0, 99999); // For mobile devices
+                
+                try {
+                    document.execCommand('copy');
+                    
+                    // Show success feedback
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> تم النسخ';
+                    copyBtn.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                    
+                } catch (err) {
+                    alert('عذراً، لم نتمكن من نسخ الرابط. يرجى المحاولة مرة أخرى.');
+                }
+            }
+        }
+
+        function shareOnWhatsApp(courseId) {
+            const courseName = getCourseName(courseId);
+            const linkInput = document.getElementById('link-' + courseId);
+            
+            // Determine the correct base URL based on current page
+            let baseUrl;
+            if (window.location.pathname.includes('courses.html')) {
+                baseUrl = window.location.origin + '/courses.html';
+            } else {
+                baseUrl = window.location.origin + '/index.html';
+            }
+            
+            // Handle local file:// URLs by using a placeholder domain
+            if (window.location.protocol === 'file:') {
+                if (!window.location.pathname.includes('courses.html')) {
+                    baseUrl = 'https://alitlaalah.org/index.html';
+                } else {
+                    baseUrl = 'https://alitlaalah.org/courses.html';
+                }
+            }
+            
+            const courseLink = linkInput ? linkInput.value : (baseUrl + '#' + courseId);
+            const message = `شاهد هذا kurs المميز: ${courseName}\n${courseLink}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+
+
+        function shareOnFacebook(courseId) {
+            const linkInput = document.getElementById('link-' + courseId);
+            
+            // Determine the correct base URL based on current page
+            let baseUrl;
+            if (window.location.pathname.includes('courses.html')) {
+                baseUrl = window.location.origin + '/courses.html';
+            } else {
+                baseUrl = window.location.origin + '/index.html';
+            }
+            
+            // Handle local file:// URLs by using a placeholder domain
+            if (window.location.protocol === 'file:') {
+                if (!window.location.pathname.includes('courses.html')) {
+                    baseUrl = 'https://alitlaalah.org/index.html';
+                } else {
+                    baseUrl = 'https://alitlaalah.org/courses.html';
+                }
+            }
+            
+            const courseLink = linkInput ? linkInput.value : (baseUrl + '#' + courseId);
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(courseLink)}`;
+            window.open(facebookUrl, '_blank');
+        }
+
+        function getCourseName(courseId) {
+            const courseNames = {
+                'course-arabic-grammar': 'تعليم القواعد النحوية لغير الناطقين بالعربية',
+                'course-tot': 'تدريب المدربين (TOT)',
+                'course-cybersecurity': 'ندوة توطين ثقافة الأمن السيبراني'
+            };
+            return courseNames[courseId] || 'دورة تدريبية';
+        }
+
+        // Close popups when clicking outside
+        document.addEventListener('click', function(e) {
+            const isClickInsideMenu = e.target.closest('.course-link-menu');
+            if (!isClickInsideMenu) {
+                document.querySelectorAll('.course-link-popup').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+            }
+        });
+
+        // Close popups on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.course-link-popup').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+            }
+        });
+
+        // Course Highlight Functionality
+        function checkForCourseHighlight() {
+            // Check URL hash for course ID
+            const hash = window.location.hash.substring(1);
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            let courseId = null;
+            
+            // Check hash first (e.g., #course-arabic-grammar)
+            if (hash && hash.startsWith('course-')) {
+                courseId = hash;
+            }
+            
+            // Check URL parameters (e.g., ?course=course-arabic-grammar)
+            const courseParam = urlParams.get('course');
+            if (courseParam && courseParam.startsWith('course-')) {
+                courseId = courseParam;
+            }
+            
+            // Check if referrer indicates external link
+            const referrer = document.referrer;
+            if (referrer && referrer !== window.location.origin) {
+                // User came from external source, show notification for first course
+                if (!courseId) {
+                    courseId = 'course-arabic-grammar'; // Default to first course
+                }
+            }
+            
+            // Highlight the course if found
+            if (courseId) {
+                highlightCourse(courseId);
+            }
+        }
+
+        function highlightCourse(courseId) {
+            const courseCard = document.querySelector(`[data-course-id="${courseId}"]`);
+            if (courseCard) {
+                // Add highlight class
+                courseCard.classList.add('highlighted');
+                
+                // Show notification
+                const courseName = getCourseName(courseId);
+                showCourseNotification(courseName);
+                
+                // Scroll to course if not in viewport
+                setTimeout(() => {
+                    courseCard.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }, 500);
+                
+                // Remove highlight after animation
+                setTimeout(() => {
+                    courseCard.classList.remove('highlighted');
+                }, 3000);
+            }
+        }
+
+        function showCourseNotification(courseName) {
+            // Remove existing notification
+            const existing = document.querySelector('.course-notification');
+            if (existing) {
+                existing.remove();
+            }
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = 'course-notification';
+            notification.innerHTML = `
+                <button class="close-btn" onclick="closeCourseNotification()">×</button>
+                <div>مرحباً! هذا هو kurs: <strong>${courseName}</strong></div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Auto hide after 4 seconds
+            setTimeout(() => {
+                closeCourseNotification();
+            }, 4000);
+        }
+
+        function closeCourseNotification() {
+            const notification = document.querySelector('.course-notification');
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }
+        }
     </script>
 </body>
 </html>
